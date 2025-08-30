@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+}
+
+body {
+  background: #e1f5fa;
+}
+
+.logo {
+  width: 100%; /* Mudei para 100% para ser responsivo */
+  max-width: 375px; /* Mantém o tamanho máximo */
+  display: block;
+  margin: 0 auto;
+}
+
+main {
+  width: 90%; /* Usando percentual para responsividade */
+  max-width: 375px; /* Limita o tamanho máximo */
+  background: #06659b;
+  margin: 0 auto 40px;
+  padding: 44px 24px 23px;
+}
+
+label {
+  color: #34b395;
+  font-weight: 400;
+  font-size: 1rem; /* Usando rem para escalabilidade */
+}
+
+select,
+input {
+  background: #fff;
+  border: 3px solid #34b395;
+  border-radius: 5px;
+  height: 45px;
+  width: 100%;
+  margin: 5px 0 24px;
+  appearance: none;
+  padding-left: 18px;
+  font-weight: 700;
+  font-size: 1rem; /* Usando rem */
+  color: #06659b;
+  cursor: pointer;
+}
+
+button {
+  background: #34b395;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  height: 48px;
+  color: #06659b;
+  font-size: 1.125rem; /* Usando rem */
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  opacity: 0.6;
+}
+
+section {
+  border: 5px solid #34b395;
+  border-radius: 20px;
+  margin-top: 36px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow-img {
+  margin: 15px 0;
+}
+
+.currency-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.currency,
+.currency-name {
+  color: #34b395;
+  font-size: 1rem; /* Usando rem */
+}
+
+.currency-value,
+.currency-value-to-convert {
+  color: #34b395;
+  font-weight: 700;
+  font-size: 1.25rem; /* Usando rem */
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  main {
+    padding: 20px; /* Reduzindo o padding em telas menores */
+  }
+
+  .logo {
+    width: 80%; /* Aumentando a responsividade da logo */
+  }
+
+  button {
+    font-size: 1rem; /* Ajustando o tamanho da fonte do botão */
+  }
+
+  .currency-value,
+  .currency-value-to-convert {
+    font-size: 1.125rem; /* Ajustando o tamanho da fonte */
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 15px; /* Aumentando o padding em telas menores */
+  }
+
+  .logo {
+    width: 90%; /* Aumentando a responsividade da logo */
+  }
+}

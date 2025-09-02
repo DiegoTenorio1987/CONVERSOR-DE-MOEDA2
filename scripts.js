@@ -11,44 +11,63 @@ const imgInput = document.querySelector(".img-input");
 const currencyNameOutput = document.querySelector(".currency-name");
 const imgOutput = document.querySelector(".img-output");
 
-// Dados das moedas em um objeto
-const currencies = {
-  real: {
-    rate: 1,
-    name: "Real",
-    img: "./assets/real.png",
-    format: "pt-BR",
-    currency: "BRL",
-  },
-  dolar: {
-    rate: 5.56,
-    name: "US Dolar",
-    img: "./assets/dolar.png",
-    format: "en-US",
-    currency: "USD",
-  },
-  euro: {
-    rate: 6.54,
-    name: "Euro",
-    img: "./assets/euro.png",
-    format: "de-DE",
-    currency: "EUR",
-  },
-  libra: {
-    rate: 7.53,
-    name: "Libra",
-    img: "./assets/libra.png",
-    format: "en-GB",
-    currency: "GBP",
-  },
-  bitcoin: {
-    rate: 654139.18,
-    name: "Bitcoin",
-    img: "./assets/bitcoin.png",
-    format: "en-US",
-    currency: "XBT",
-  },
-};
+// Objeto para armazenar as taxas de câmbio
+let currencies = {};
+
+// Função para buscar as taxas de câmbio da API
+async function fetchExchangeRates() {
+  try {
+    // Aqui você insere sua chave de API
+    const response = await fetch(
+      `https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,GBP-BRL`
+    );
+    const data = await response.json();
+
+    // Atualiza o objeto currencies com as taxas recebidas
+    currencies = {
+      real: {
+        rate: 1,
+        name: "Real",
+        img: "./assets/real.png",
+        format: "pt-BR",
+        currency: "BRL",
+      },
+      dolar: {
+        rate: data.USDBRL.high, // Ajuste aqui
+        name: "US Dolar",
+        img: "./assets/dolar.png",
+        format: "en-US",
+        currency: "USD",
+      },
+      euro: {
+        rate: data.EURBRL.high, // Ajuste aqui
+        name: "Euro",
+        img: "./assets/euro.png",
+        format: "de-DE",
+        currency: "EUR",
+      },
+      libra: {
+        rate: data.GBPBRL.high, // Ajuste aqui
+        name: "Libra",
+        img: "./assets/libra.png",
+        format: "en-GB",
+        currency: "GBP",
+      },
+      bitcoin: {
+        rate: data.BTCBRL.high, // Ajuste aqui
+        name: "Bitcoin",
+        img: "./assets/bitcoin.png",
+        format: "en-US",
+        currency: "BTC", // Ajuste aqui
+      },
+    };
+  } catch (error) {
+    console.error("Erro ao buscar as taxas de câmbio:", error);
+  }
+}
+
+// Chama a função para buscar as taxas de câmbio ao carregar a página
+fetchExchangeRates();
 
 // Função para formatar o valor
 function formatCurrency(value, currency) {

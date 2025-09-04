@@ -82,7 +82,6 @@ function updateCurrencyDisplay(selectElement, nameElement, imgElement) {
   const selectedValue = selectElement.value; // Obtém o valor selecionado no elemento de seleção
   nameElement.innerHTML = currencies[selectedValue].name; // Atualiza o nome da moeda no elemento correspondente
   imgElement.src = currencies[selectedValue].img; // Atualiza a imagem da moeda no elemento correspondente
-  convertValues(); // Atualiza a conversão ao trocar a moeda
 }
 
 // Função para lidar com a conversão
